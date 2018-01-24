@@ -10,6 +10,9 @@ namespace Project_1
     {
         static void Main(string[] args)
         {
+
+            //Declarations
+
         }
     }
 }
