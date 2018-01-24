@@ -14,7 +14,7 @@ namespace Project_1
             //Declarations
             string[,] playerNames =
             {
-                {"Matthew", "Saqueon" }
+                {"Matthew", "Saqueon", "Mike"}
 
             };
 
