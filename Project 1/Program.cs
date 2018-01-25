@@ -12,10 +12,10 @@ namespace Project_1
         {
 
             //Declarations
-            string[,] positions =
+            string[,] playerNames =
             {
-                {"Mason Rudolph", "Saquon Barkle", "Courtland Sutton", "Defensive Lineman",
-                 "Defensive-Back", "Tight Ends", "Line-Backers", "Offensive Tackles" }
+                {"Mason Rudolph", "Saquon Barkle", "Courtland Sutton", "Maurice Hurst",
+                 "Joshua Jackson", "Mark Andrews", "Roquan Smith", "Orlando Brown" }
             };
 
         }
