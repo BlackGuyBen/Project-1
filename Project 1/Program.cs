@@ -12,17 +12,9 @@ namespace Project_1
         {
 
             //Declarations
-            string[,] positions =
-            {
-<<<<<<< HEAD
-                {"Mason Rudolph", "Saquon Barkle", "Courtland Sutton", "Maurice Hurst",
-                 "Joshua Jackson", "Mark Andrews", "Roquan Smith", "Orlando Brown" }
-=======
-                {"Quaterback", "Running Back", "Wide-Recevier", "Defensive Lineman",
-                 "Defensive-Back", "Tight Ends", "Line-Backers", "Offensive Tackles"}
+            string[] positions =
+            {"Quaterback", "Running Back", "Wide-Recevier", "Defensive Lineman","Defensive-Back", "Tight Ends", "Line-Backers", "Offensive Tackles"};
 
->>>>>>> testing
-            };
             string[,] playerNames =
             {
              /*1*/   {"Mason Rudolph","Saquon Barkley","Courtland Sutton", "Maurice Hurst", "Joshua Jackson", "Mark Andrews", "Roquan Smith", "Orlando Brown"},
@@ -31,6 +23,7 @@ namespace Project_1
              /*4*/   {"Sam Darnold", "Ronald Jones II", "Anthony Miller", "Da'Ron Payne", "Minkah Fitzpatrick", "Mike Gesicki", "Dorian O'Daniel", "Connor Williams"},
              /*5*/   {"Baker Mayfield","Damien Harris", "Calvin Ridley", "Harrison Phillips", "Isaiah Oliver","Troy Fumagalli","Malik Jefferson","Mike McGlinchey"}
             };
+
             string[,] colleges =
             {
              /*1*/  {"Oklahoma State", "Penn State", "Southern Methodist", "Michigan", "Iowa", "Oklahoma", "Georgia", "Oklahoma"},
@@ -39,6 +32,7 @@ namespace Project_1
              /*4*/  {"Southern California","Southern California","Memphis","Alabama","Alabama","Penn State","Clemson","Texas" },
              /*5*/  {"Oklahoma","Alabama","Alabama","Stanford","Colorado","Wisconsin","Texas","Notre Dame" }
             };
+
             string[,] salary =
             {
              /*1*/  {"$26,400,100","$24,500,100","$23,400,000","$26,200,300","$24,000,000","$27,800,900","$22,900,300","$23,000,000" },
