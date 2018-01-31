@@ -127,7 +127,27 @@ namespace Project_1
 
         public static bool getInnerPrimer()
         {
+            string sentinel;
+            bool keepGoing;
+            Console.WriteLine("If you would like to add another player, please enter Y. Otherwise enter N");
+            sentinel = Console.ReadLine().ToUpper();
 
+            if (sentinel == "Y")
+            {
+                keepGoing = true;
+            }
+            else
+            {
+                keepGoing = false;
+            }
+            return keepGoing;
+            
+        }
+        public static string getName()
+        {
+            //Declarations
+            string playerName;
+            Console.WriteLine();
         }
     }
 }
