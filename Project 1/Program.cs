@@ -58,6 +58,7 @@ namespace Project_1
 
             List<String> coachList = new List<String>();
             List<Double> playerCost = new List<Double>();
+            List<String> roster = new List<String>();
 
             ConsoleKeyInfo keyPress;
 
@@ -78,8 +79,24 @@ namespace Project_1
                     //Add data to list
                     coachList.Add(playerNames[row, col]);
                     playerCost.Add(salary[row, col]);
+                    //playerNumberCost.Add(salaryNumbered[row, col]);
                     keepGoing = getInnerPrimer();
                 } while (keepGoing);
+
+                //Going through the list to show choosen players
+                foreach (var x in coachList)
+                {
+                    Console.WriteLine($"You have added the following player {i}");
+                }
+
+                Console.WriteLine("Total number of players: {0}", coachList.Count);
+                total = playerCost.Sum();
+
+
+
+
+
+
             }
 
         }
