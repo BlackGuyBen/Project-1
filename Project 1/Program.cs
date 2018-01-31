@@ -93,7 +93,10 @@ namespace Project_1
                 total = playerCost.Sum();
 
 
-
+                roster.Add(playerNames, numInput, coachList.Count, new List<String>(coachList), sum);
+                coachList.Clear();
+                getPrimer(out keyPress);
+                //end of loop
 
 
 
