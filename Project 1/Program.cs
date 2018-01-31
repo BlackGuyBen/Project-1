@@ -42,6 +42,52 @@ namespace Project_1
              /*5*/  {"$10,300,000","$11,600,400","$10,000,000","$13,000,000","$11,899,999","$14,900,333","$10,000,100","$15,900,000" }
             };
 
+            double[,] salaryNumbered =
+            {
+             /*1*/  {26400100,24500100,23400000,26200300,24000000,27800900,22900300,23000000 },
+             /*2*/  {20300100,19890200,21900300,22000000,22500249,21000800,19000590,20000000 },
+             /*3*/  {17420300,18700800,19300230,16000000,20000100,17499233,18000222,19400000 },
+             /*4*/  {13100145,15000000,13400230,18000000,16000200,27900200,12999999,16200700 },
+             /*5*/  {10300000,11600400,10000000,13000000,11899999,14900333,10000100,15900000 }
+            };
+
+            int row, col;
+            bool keepGoing = true;
+            double sum;
+            string numInput, name;
+
+            List<String> coachList = new List<String>();
+            List<Double> playerCost = new List<Double>();
+
+            ConsoleKeyInfo keyPress;
+
+            //welcome message
+            welcome(out keyPress);
+            while (keyPress.Key == ConsoleKey.Enter)
+            {
+                name = getName();
+                numInput = getInput();
+                Console.Clear();
+                outputList(ref positions, ref playerNames, ref colleges, ref );
+
+                do
+                {
+                    getData(out row, out col);
+                    outputInfo(ref row, ref col, ref salary);
+
+                    //Add data to list
+                    coachList.Add(playerNames[row, col]);
+                    playerCost.Add(salary[row, col]);
+                    keepGoing = getInnerPrimer();
+                } while (keepGoing);
+            }
+
+        }
+        public static void welcome(out ConsoleKeyInfo keyPress)
+        {
+            Console.WriteLine("Welcome, this program...");
+            Console.WriteLine("Let's get started, please press the enter key");
+            keyPress = Console.ReadKey();
         }
     }
 }
