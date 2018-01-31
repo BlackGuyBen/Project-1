@@ -96,18 +96,38 @@ namespace Project_1
                 roster.Add(playerNames, numInput, coachList.Count, new List<String>(coachList), sum);
                 coachList.Clear();
                 getPrimer(out keyPress);
-                //end of loop
+              
+            }//end of while loop
 
+            Console.Clear();
 
+            Console.WriteLine("Listed below are the players you've choosen");
 
+            foreach (Term x in schedule)
+            {
+                Console.WriteLine($"For {x.getTerm()} there are {x.getcoachNumber()} players and the total cost is {x.getsalaryNumber().ToString("C")}");
+                foreach (var i in x.getListofCourses())
+                {
+                    Console.WriteLine($"{i}");
+                }
+                Console.WriteLine("");
             }
 
-        }
+        }//end of main
         public static void welcome(out ConsoleKeyInfo keyPress)
         {
             Console.WriteLine("Welcome, this program...");
             Console.WriteLine("Let's get started, please press the enter key");
             keyPress = Console.ReadKey();
+        }
+        public static void getPrimer(out ConsoleKeyInfo keyPress)
+        {
+            keyPress = Console.ReadKey();
+        }
+
+        public static bool getInnerPrimer()
+        {
+
         }
     }
 }
