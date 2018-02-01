@@ -148,6 +148,38 @@ namespace Project_1
             //Declarations
             string playerName;
             Console.WriteLine();
+            //there may be more to this 
+            playerName = Console.ReadLine();
+
+            return playerName;
+        }
+
+        public static void outputInfo (ref string [,] playerNames)
+        {
+            for (var x = 0; x< playerNames.GetLength(0); x++)
+            {
+                Console.WriteLine($" playerName{x+1}:   ");
+                for (var y = 0; y <playerNames.GetLength(1); y++)
+                {
+                    Console.WriteLine($"  {x+1}{y+1}) {playerNames[x,y]}");
+                }
+                Console.WriteLine("  \n");
+            } //outer forloop
+
+        } //end of outputNames
+
+        public static void getData (out int row, out int col)
+        {
+            string userInput;
+            Console.WriteLine("Please enter a player you would like to draft");
+            userInput = Console.ReadLine();
+            row = Int32.Parse(userInput.Substring(0, 1)) - 1;
+            col = Int32.Parse(userInput.Substring(1, 1)) - 1;
+
+        }
+        public static void outputInfo (ref int row, ref int col, ref string [,] playerNames, ref double [,] playerSalary)
+        {
+            Console.WriteLine($"You have selected {playerNames[row,col]}. They will cost {playerSalary[row,col].ToString("c")}");
         }
     }
 }
