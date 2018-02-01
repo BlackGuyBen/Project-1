@@ -42,6 +42,7 @@ namespace Project_1
              /*5*/  {"$10,300,000","$11,600,400","$10,000,000","$13,000,000","$11,899,999","$14,900,333","$10,000,100","$15,900,000" }
             };
 
+            //Int version of the salary. May not even need to use this
             double[,] salaryNumbered =
             {
              /*1*/  {26400100,24500100,23400000,26200300,24000000,27800900,22900300,23000000 },
@@ -53,12 +54,12 @@ namespace Project_1
 
             int row, col;
             bool keepGoing = true;
-            double sum;
-            string numInput, name;
+            double total;
+            string name;
 
             List<String> coachList = new List<String>();
             List<Double> playerCost = new List<Double>();
-            List<String> roster = new List<String>();
+            List<AutoDraft> roster = new List<AutoDraft>();
 
             ConsoleKeyInfo keyPress;
 
@@ -67,33 +68,35 @@ namespace Project_1
             while (keyPress.Key == ConsoleKey.Enter)
             {
                 name = getName();
-                numInput = getInput();
+                //numInput = getInput();
                 Console.Clear();
-                outputList(ref positions, ref playerNames, ref colleges, ref );
+                outputList(ref playerNames);
 
                 do
                 {
                     getData(out row, out col);
-                    outputInfo(ref row, ref col, ref salary);
+                    outputInfo(ref row, ref col,ref playerNames, ref salaryNumbered);
 
                     //Add data to list
                     coachList.Add(playerNames[row, col]);
-                    playerCost.Add(salary[row, col]);
+                    playerCost.Add(salaryNumbered[row, col]);
                     //playerNumberCost.Add(salaryNumbered[row, col]);
                     keepGoing = getInnerPrimer();
+
+
                 } while (keepGoing);
 
                 //Going through the list to show choosen players
                 foreach (var x in coachList)
                 {
-                    Console.WriteLine($"You have added the following player {i}");
+                    Console.WriteLine($"You have added the following players {x}");
                 }
 
                 Console.WriteLine("Total number of players: {0}", coachList.Count);
                 total = playerCost.Sum();
 
 
-                roster.Add(playerNames, numInput, coachList.Count, new List<String>(coachList), sum);
+                roster.Add(new AutoDraft(playerNames, coachList.Count, new List<String>(coachList), total));
                 coachList.Clear();
                 getPrimer(out keyPress);
               
@@ -181,5 +184,10 @@ namespace Project_1
         {
             Console.WriteLine($"You have selected {playerNames[row,col]}. They will cost {playerSalary[row,col].ToString("c")}");
         }
+    }
+
+    class AutoDraft
+    {
+
     }
 }
