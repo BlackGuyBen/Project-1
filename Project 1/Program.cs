@@ -171,7 +171,7 @@ namespace Project_1
 
             string[] Ranking = { "The Best", "2nd Best", "3rd Best", "4th Best", "5th Best" };
 
-            int c = 5;
+            int c = 23;
 
             Console.WriteLine("You can add up to 5 players to your draft.");
             for (var x = 0; x < playerNames.GetLength(0); x++)
