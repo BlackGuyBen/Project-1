@@ -177,11 +177,13 @@ namespace Project_1
             for (var x = 0; x < playerNames.GetLength(0); x++)
             {
                 Console.WriteLine(Ranking[x].PadRight(c));
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
 
                 for (var y = 0; y < playerNames.GetLength(1); y++)
                 {
                     Console.Write($"{x + 1}{y + 1}) {playerNames[x, y]}".PadRight(c));
                     Console.Write("        ");
+                    
                     Console.Write(colleges[x,y].PadRight(c));
                     Console.Write("        ");
                     Console.Write(salary[x,y].PadRight(c));
