@@ -55,7 +55,7 @@ namespace Project_1
             int row, col;
             bool keepGoing = true;
             double total;
-           
+
             List<String> coachList = new List<String>();
             List<Double> playerCost = new List<Double>();
             List<AutoDraft> roster = new List<AutoDraft>();
@@ -68,17 +68,16 @@ namespace Project_1
                 name = GetName();
                 //userInput = getInput();
                 Console.Clear();
-                OutputList(ref playerNames);
+                OutputList(ref playerNames, ref colleges, ref salary, ref positions);
 
                 do
                 {
                     GetData(out row, out col);
-                    OutputInfo(ref row, ref col,ref playerNames, ref salaryNumbered);
+                    OutputInfo(ref row, ref col, ref playerNames, ref salaryNumbered);
 
                     //Add data to list
                     coachList.Add(playerNames[row, col]);
                     playerCost.Add(salaryNumbered[row, col]);
-                    //playerNumberCost.Add(salaryNumbered[row, col]);
                     keepGoing = GetInnerPrimer();
 
 
@@ -87,7 +86,7 @@ namespace Project_1
                 //Going through the list to show choosen players
                 foreach (var x in coachList)
                 {
-                    Console.WriteLine($"You have added the following players {x}");
+                    Console.WriteLine($"You have added the following player {x}");
                 }
 
                 Console.WriteLine("Total number of players: {0}", coachList.Count);
@@ -97,10 +96,10 @@ namespace Project_1
                 roster.Add(new AutoDraft(name, coachList.Count, new List<String>(coachList), total));
                 coachList.Clear();
                 GetPrimer(out keyPress);
-              
+
             }//end of while loop
 
-            Console.Clear();
+            // Console.Clear();
 
             Console.WriteLine("Listed below are the players you've choosen");
 
@@ -111,13 +110,13 @@ namespace Project_1
                 {
                     Console.WriteLine($"{i}");
                 }
-                Console.WriteLine("");
+                Console.WriteLine("---");
             }
 
         }//end of main
         public static void Welcome(out ConsoleKeyInfo keyPress)
         {
-            Console.WriteLine("Welcome, this program...");
+            Console.WriteLine("Welcome, this is a draft program for the NFL Draft.");
             Console.WriteLine("Let's get started, please press the enter key");
             keyPress = Console.ReadKey();
         }
@@ -130,19 +129,31 @@ namespace Project_1
         {
             string sentinel;
             bool keepGoing;
-            Console.WriteLine("If you would like to add another player, please enter Y. Otherwise enter N");
-            sentinel = Console.ReadLine().ToUpper();
+            int counter = 0;
 
-            if (sentinel == "Y")
+            if (counter < 5)
             {
-                keepGoing = true;
+                Console.WriteLine("If you would like to add another player, please enter Y. Otherwise enter N");
+                sentinel = Console.ReadLine().ToUpper();
+
+                if (sentinel == "Y")
+                {
+                    keepGoing = true;
+                }
+                else
+                {
+                    keepGoing = false;
+                }
+                counter += 1;
+
             }
             else
             {
                 keepGoing = false;
             }
+
             return keepGoing;
-            
+
         }
         public static string GetName()
         {
@@ -155,21 +166,38 @@ namespace Project_1
             return playerName;
         }
 
-        public static void OutputList (ref string [,] playerNames)
+        public static void OutputList(ref string[,] playerNames, ref string[,] colleges, ref string[,] salary, ref string[] positions)
         {
-            for (var x = 0; x< playerNames.GetLength(0); x++)
+
+            string[] Ranking = { "The Best", "2nd Best", "3rd Best", "4th Best", "5th Best" };
+
+            int c = 5;
+
+            Console.WriteLine("You can add up to 5 players to your draft.");
+            for (var x = 0; x < playerNames.GetLength(0); x++)
             {
-                Console.WriteLine($" playerName{x+1}:   ");
-                for (var y = 0; y <playerNames.GetLength(1); y++)
+                Console.WriteLine(Ranking[x].PadRight(c));
+
+                for (var y = 0; y < playerNames.GetLength(1); y++)
                 {
-                    Console.WriteLine($"  {x+1}{y+1}) {playerNames[x,y]}");
+                    Console.Write($"{x + 1}{y + 1}) {playerNames[x, y]}".PadRight(c));
+                    Console.Write("        ");
+                    Console.Write(colleges[x,y].PadRight(c));
+                    Console.Write("        ");
+                    Console.Write(salary[x,y].PadRight(c));
+                    Console.Write("        ");
+                    Console.Write(positions[x].PadRight(c));
+                    Console.WriteLine("         ");
                 }
                 Console.WriteLine("  \n");
-            } //outer forloop
+            }
+        } //end of output list
 
-        } //end of outputNames
+        //outer forloop
 
-        public static void GetData (out int row, out int col)
+        //end of outputNames
+
+        public static void GetData(out int row, out int col)
         {
             string userInput;
             Console.WriteLine("Please enter a player you would like to draft");
@@ -177,11 +205,15 @@ namespace Project_1
             row = Int32.Parse(userInput.Substring(0, 1)) - 1;
             col = Int32.Parse(userInput.Substring(1, 1)) - 1;
 
+
+
         }
-        public static void OutputInfo (ref int row, ref int col, ref string [,] playerNames, ref double [,] playerSalary)
+        public static void OutputInfo(ref int row, ref int col, ref string[,] playerNames, ref double[,] playerSalary)
         {
-            Console.WriteLine($"You have selected {playerNames[row,col]}. They will cost {playerSalary[row,col].ToString("c")}");
+            Console.WriteLine($"You have selected {playerNames[row, col]}. They will cost {playerSalary[row, col].ToString("c")}");
         }
+
+        //
     }
 
     class AutoDraft
@@ -207,7 +239,7 @@ namespace Project_1
             GetsalaryNumber = salary;
         }
 
-        public AutoDraft (string name, double count, List<string> list, double salary)
+        public AutoDraft(string name, double count, List<string> list, double salary)
         {
             Name = name;
             GetcoachNumber = count;
@@ -215,6 +247,9 @@ namespace Project_1
             GetsalaryNumber = salary;
         }
 
-     
+
     }
 }
+
+
+
