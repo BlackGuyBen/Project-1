@@ -51,37 +51,35 @@ namespace Project_1
              /*4*/  {13100145,15000000,13400230,18000000,16000200,27900200,12999999,16200700 },
              /*5*/  {10300000,11600400,10000000,13000000,11899999,14900333,10000100,15900000 }
             };
-
+            string name;
             int row, col;
             bool keepGoing = true;
             double total;
-            string name;
-
+           
             List<String> coachList = new List<String>();
             List<Double> playerCost = new List<Double>();
             List<AutoDraft> roster = new List<AutoDraft>();
-
             ConsoleKeyInfo keyPress;
 
             //welcome message
-            welcome(out keyPress);
+            Welcome(out keyPress);
             while (keyPress.Key == ConsoleKey.Enter)
             {
-                name = getName();
-                //numInput = getInput();
+                name = GetName();
+                //userInput = getInput();
                 Console.Clear();
-                outputList(ref playerNames);
+                OutputList(ref playerNames);
 
                 do
                 {
-                    getData(out row, out col);
-                    outputInfo(ref row, ref col,ref playerNames, ref salaryNumbered);
+                    GetData(out row, out col);
+                    OutputInfo(ref row, ref col,ref playerNames, ref salaryNumbered);
 
                     //Add data to list
                     coachList.Add(playerNames[row, col]);
                     playerCost.Add(salaryNumbered[row, col]);
                     //playerNumberCost.Add(salaryNumbered[row, col]);
-                    keepGoing = getInnerPrimer();
+                    keepGoing = GetInnerPrimer();
 
 
                 } while (keepGoing);
@@ -96,9 +94,9 @@ namespace Project_1
                 total = playerCost.Sum();
 
 
-                roster.Add(new AutoDraft(playerNames, coachList.Count, new List<String>(coachList), total));
+                roster.Add(new AutoDraft(name, coachList.Count, new List<String>(coachList), total));
                 coachList.Clear();
-                getPrimer(out keyPress);
+                GetPrimer(out keyPress);
               
             }//end of while loop
 
@@ -106,10 +104,10 @@ namespace Project_1
 
             Console.WriteLine("Listed below are the players you've choosen");
 
-            foreach (Term x in schedule)
+            foreach (AutoDraft x in roster)
             {
-                Console.WriteLine($"For {x.getTerm()} there are {x.getcoachNumber()} players and the total cost is {x.getsalaryNumber().ToString("C")}");
-                foreach (var i in x.getListofCourses())
+                Console.WriteLine($"For {x.GetDraft} there are {x.GetcoachNumber} players and the total cost is {x.GetsalaryNumber.ToString("C")}");
+                foreach (var i in x.GetListofPlayers)
                 {
                     Console.WriteLine($"{i}");
                 }
@@ -117,18 +115,18 @@ namespace Project_1
             }
 
         }//end of main
-        public static void welcome(out ConsoleKeyInfo keyPress)
+        public static void Welcome(out ConsoleKeyInfo keyPress)
         {
             Console.WriteLine("Welcome, this program...");
             Console.WriteLine("Let's get started, please press the enter key");
             keyPress = Console.ReadKey();
         }
-        public static void getPrimer(out ConsoleKeyInfo keyPress)
+        public static void GetPrimer(out ConsoleKeyInfo keyPress)
         {
             keyPress = Console.ReadKey();
         }
 
-        public static bool getInnerPrimer()
+        public static bool GetInnerPrimer()
         {
             string sentinel;
             bool keepGoing;
@@ -146,7 +144,7 @@ namespace Project_1
             return keepGoing;
             
         }
-        public static string getName()
+        public static string GetName()
         {
             //Declarations
             string playerName;
@@ -157,7 +155,7 @@ namespace Project_1
             return playerName;
         }
 
-        public static void outputInfo (ref string [,] playerNames)
+        public static void OutputList (ref string [,] playerNames)
         {
             for (var x = 0; x< playerNames.GetLength(0); x++)
             {
@@ -171,7 +169,7 @@ namespace Project_1
 
         } //end of outputNames
 
-        public static void getData (out int row, out int col)
+        public static void GetData (out int row, out int col)
         {
             string userInput;
             Console.WriteLine("Please enter a player you would like to draft");
@@ -180,7 +178,7 @@ namespace Project_1
             col = Int32.Parse(userInput.Substring(1, 1)) - 1;
 
         }
-        public static void outputInfo (ref int row, ref int col, ref string [,] playerNames, ref double [,] playerSalary)
+        public static void OutputInfo (ref int row, ref int col, ref string [,] playerNames, ref double [,] playerSalary)
         {
             Console.WriteLine($"You have selected {playerNames[row,col]}. They will cost {playerSalary[row,col].ToString("c")}");
         }
@@ -189,5 +187,34 @@ namespace Project_1
     class AutoDraft
     {
 
+        public string Name { get; set; }
+        public string GetDraft { get; set; } = "NFL Draft Choices";
+        public double GetcoachNumber { get; set; }
+        public List<string> GetListofPlayers { get; set; }
+        public double GetsalaryNumber { get; set; }
+
+        public AutoDraft()
+        {
+
+        }
+
+        public AutoDraft(string name, string draft, double count, List<string> list, double salary)
+        {
+            Name = name;
+            GetDraft = draft;
+            GetListofPlayers = list;
+            GetcoachNumber = count;
+            GetsalaryNumber = salary;
+        }
+
+        public AutoDraft (string name, double count, List<string> list, double salary)
+        {
+            Name = name;
+            GetcoachNumber = count;
+            GetListofPlayers = list;
+            GetsalaryNumber = salary;
+        }
+
+     
     }
 }
